@@ -12,9 +12,11 @@ namespace Core.Gameplay.Game
         [SerializeField] private CameraFollower _camera;
         [SerializeField] private PlayerController _player;
         [SerializeField] private PlayerStatisticsController _playerStatisticsController;
+        [SerializeField] private BonusSystemController _bonusSystemController;
 
         [Space(5), Header("Views")]
         [SerializeField] private WinPopupView _winPopupView;
+        [SerializeField] private PauseWindowView _pauseWindowView;
         [SerializeField] private List<Screen> _activeScreens = new();
 
         private bool _isPlayerLose = false;
@@ -26,6 +28,9 @@ namespace Core.Gameplay.Game
             _camera.OnHighestYChanged += HandleChangedHighestY;
             _player.OnPlayerDied += HandlePlayerDie;
 
+            _pauseWindowView.OnPauseClosed += UnpauseGame;
+            _pauseWindowView.OnPauseOpened += PauseGame;
+
             _lowerBound = _camera.CurrentLowerBound;
         }
 
@@ -33,6 +38,9 @@ namespace Core.Gameplay.Game
         {
             _camera.OnHighestYChanged -= HandleChangedHighestY;
             _player.OnPlayerDied -= HandlePlayerDie;
+
+            _pauseWindowView.OnPauseClosed -= UnpauseGame;
+            _pauseWindowView.OnPauseOpened -= PauseGame;
         }
 
         private void Update()
@@ -40,9 +48,17 @@ namespace Core.Gameplay.Game
             CheckPlayerLose();
         }
 
-        public void PauseGame() => Time.timeScale = 0f;
+        private void PauseGame()
+        {
+            _player.FreezePlayer();
+            _bonusSystemController.Pause();
+        }
 
-        public void UnpauseGame() => Time.timeScale = 1f;
+        private void UnpauseGame()
+        {
+            _player.UnfreezePlayer();
+            _bonusSystemController.Unpause();
+        }
 
         private void CheckPlayerLose()
         {
@@ -65,6 +81,8 @@ namespace Core.Gameplay.Game
                 EconomyController.Instance.GetCollectedCoins());
             _winPopupView.Open();
             _isPlayerLose = true;
+
+            _playerStatisticsController.SaveBestScore();
         }
 
         private void HandleChangedHighestY(float value) => _lowerBound = value;

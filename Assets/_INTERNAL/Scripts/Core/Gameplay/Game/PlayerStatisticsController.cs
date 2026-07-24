@@ -35,12 +35,10 @@ namespace Core.Gameplay.Game
 
             _currentScore += delta * multiplier;
 
-            SaveBestScore();
-
             _view.UpdateUI(_currentScore, _bestScore);
         }
 
-        private void SaveBestScore()
+        public void SaveBestScore()
         {
             if(_currentScore > _bestScore)
             {

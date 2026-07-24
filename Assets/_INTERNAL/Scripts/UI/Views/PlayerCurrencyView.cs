@@ -13,14 +13,11 @@ namespace UI.Views
 
         private readonly NumberFormatter _formatter = new();
 
-        private void Awake()
+        private void Start()
         {
             EconomyController.Instance.OnCoinsBalanceChanged += HandleChangedCoinsBalance;
             EconomyController.Instance.OnGemsBalanceChanged += HandleChangedGemsBalance;
-        }
 
-        private void Start()
-        {
             EconomyController.Instance.RequestCoinsBalance();
             EconomyController.Instance.RequestGemsBanalce();
         }

@@ -10,6 +10,7 @@ namespace UI
     {
         private const string ShownLetsPlayKey = "ShownLetsPlay";
         private const string DailyLastClaimKey = "DailyBonusLastClaim";
+        private static bool _hasShownLetsPlayThisSession = false;
 
         [Header("Screens")]
         [SerializeField] private Screen _letsPlayScreen;
@@ -26,8 +27,6 @@ namespace UI
         [SerializeField] private int _dailyAmount = 1000;
         [SerializeField] private bool _debugDisableCooldown = false;
 
-        public event Action OnGamePrepared;
-
         private void Awake()
         {
             _letsPlayButton.OnButtonClick += HandleLetsPlayButtonClick;
@@ -38,15 +37,19 @@ namespace UI
         {
             if (_gameScreen.IsActive)
             {
-                if (PlayerPrefs.GetInt(ShownLetsPlayKey, 0) == 0)
+                if (!_hasShownLetsPlayThisSession && PlayerPrefs.GetInt(ShownLetsPlayKey, 0) == 0)
                 {
                     _gameScreen.Close();
                     _letsPlayScreen.Open();
                     PlayerPrefs.SetInt(ShownLetsPlayKey, 1);
                     PlayerPrefs.Save();
+                    _hasShownLetsPlayThisSession = true;
                 }
                 else
-                    OnGamePrepared?.Invoke();
+                {
+                    _letsPlayScreen.Close();
+                    _gameScreen.Open();
+                }
             }
         }
 
@@ -71,7 +74,6 @@ namespace UI
             {
                 _popupsScreen.Open();
                 _gameScreen.Open();
-                OnGamePrepared?.Invoke();
             }
         }
 
@@ -98,7 +100,6 @@ namespace UI
 
             _popupsScreen.Open();
             _gameScreen.Open();
-            OnGamePrepared?.Invoke();
         }
 
         private bool IsDailyAvailable()

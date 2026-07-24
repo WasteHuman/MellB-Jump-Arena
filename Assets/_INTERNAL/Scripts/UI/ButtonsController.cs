@@ -14,6 +14,7 @@ namespace UI
         [SerializeField] private ActionButton _playButton;
         [SerializeField] private ActionButton _ballsButton;
         [SerializeField] private ActionButton _achievementsButton;
+        [SerializeField] private ActionButton _wheelOfLuckButton;
 
         public event Action OnSettingsButtonClick;
 
@@ -24,6 +25,7 @@ namespace UI
             _playButton.OnButtonClick += HandlePlayButtonClick;
             _ballsButton.OnButtonClick += HandleBallsButtonClick;
             _achievementsButton.OnButtonClick += HandleAchievementsButtonClick;
+            _wheelOfLuckButton.OnButtonClick += HandleWheelOfLuckButtonClick;
         }
 
         private void OnDestroy()
@@ -33,6 +35,7 @@ namespace UI
             _playButton.OnButtonClick -= HandlePlayButtonClick;
             _ballsButton.OnButtonClick -= HandleBallsButtonClick;
             _achievementsButton.OnButtonClick -= HandleAchievementsButtonClick;
+            _wheelOfLuckButton.OnButtonClick -= HandleWheelOfLuckButtonClick;
         }
 
         private void HandleAchievementsButtonClick()
@@ -54,7 +57,15 @@ namespace UI
 
         private void HandleStoreButtonClick()
         {
+            SceneManager.LoadSceneAsync(SceneNames.STORE);
+            DOTween.KillAll();
             Debug.Log("Store Button clicked");
+        }
+
+        private void HandleWheelOfLuckButtonClick()
+        {
+            SceneManager.LoadSceneAsync(SceneNames.WHEEL_OF_LUCK);
+            DOTween.KillAll();
         }
 
         private void HandleSettingsButtonClick() => OnSettingsButtonClick?.Invoke();

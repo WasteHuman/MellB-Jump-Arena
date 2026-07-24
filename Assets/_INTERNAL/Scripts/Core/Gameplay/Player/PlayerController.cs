@@ -25,6 +25,9 @@ namespace Core.Gameplay.Player
         [SerializeField] private PlayerStatisticsController _playerStatisticsController;
         [SerializeField] private BonusSystemController _bonusSystemController;
 
+        [Space(5), Header("Other")]
+        [SerializeField] private SpriteRenderer _spriteRenderer;
+
         private Rigidbody2D _rb;
         private bool _isGrounded;
         private Vector2 _currentVelocity;
@@ -35,6 +38,8 @@ namespace Core.Gameplay.Player
         {
             _rb = GetComponent<Rigidbody2D>();
             _rb.gravityScale = _gravityScale;
+
+            _spriteRenderer.sprite = PlayerSkinsController.GetCurrentSprite();
         }
 
         private void Update()
@@ -50,6 +55,9 @@ namespace Core.Gameplay.Player
             HandleHorizontalMovement();
             HandleJump();
         }
+
+        public void FreezePlayer() => _rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        public void UnfreezePlayer() => _rb.constraints = RigidbodyConstraints2D.None;
 
         public void Die()
         {

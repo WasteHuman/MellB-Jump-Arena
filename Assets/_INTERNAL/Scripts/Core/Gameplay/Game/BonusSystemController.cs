@@ -29,6 +29,8 @@ namespace Core.Gameplay.Game
 
         private BonusState _currentState;
 
+        private bool _isPaused = false;
+
         private float _fillTimer;
         private float _activeTimer;
         private float _cooldownTimer;
@@ -45,6 +47,9 @@ namespace Core.Gameplay.Game
 
         private void Update()
         {
+            if (_isPaused)
+                return;
+
             switch (_currentState)
             {
                 case BonusState.Filling:
@@ -60,6 +65,9 @@ namespace Core.Gameplay.Game
                     break;
             }
         }
+
+        public void Pause() => _isPaused = true;
+        public void Unpause() => _isPaused = false;
 
         private void ProcessFilling()
         {

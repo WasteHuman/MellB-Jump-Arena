@@ -1,5 +1,7 @@
-﻿using DG.Tweening;
+﻿using Core.Gameplay.Player;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.Animations.GameScreen
 {
@@ -11,6 +13,9 @@ namespace UI.Animations.GameScreen
         [SerializeField] private float _hoverAnimationDuration = 1f;
         [SerializeField] private RectTransform _ballRect;
 
+        [Space(5), Header("Visual Setup")]
+        [SerializeField] private Image _ballImage;
+
         private Tween _hoverTween;
 
         private void Awake()
@@ -19,6 +24,17 @@ namespace UI.Animations.GameScreen
                 _ballRect = GetComponent<RectTransform>();
 
             StartAnimation();
+        }
+
+        private void Start()
+        {
+            _ballImage.sprite = PlayerSkinsController.GetCurrentSprite();
+            PlayerSkinsController.OnSkinChanged += HandleChangedSkin;
+        }
+
+        private void OnDestroy()
+        {
+            PlayerSkinsController.OnSkinChanged -= HandleChangedSkin;
         }
 
         public void StartAnimation()
@@ -34,5 +50,7 @@ namespace UI.Animations.GameScreen
         }
 
         public void StopAnimation() => _hoverTween?.Kill();
+
+        private void HandleChangedSkin(Sprite skin) => _ballImage.sprite = skin;
     }
 }

@@ -23,6 +23,7 @@ namespace UI.Other
                 _button.interactable = value;
             }
         }
+        public ButtonAnimations Animations => _animations;
 
         public event Action OnButtonClick;
 

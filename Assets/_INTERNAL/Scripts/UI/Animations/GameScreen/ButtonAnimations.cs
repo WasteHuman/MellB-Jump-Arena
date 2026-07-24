@@ -43,7 +43,9 @@ namespace UI.Animations.GameScreen
             _rectTransform.DOKill();
         }
 
-        private void PulseAnimation()
+        public void StopPulseAnimation() => _pulseTween?.Kill();
+
+        public void PulseAnimation()
         {
             _pulseTween?.Kill();
 

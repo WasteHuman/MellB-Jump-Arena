@@ -6,9 +6,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UI.Other;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace Core.WheelOfLuck
 {
@@ -33,8 +32,8 @@ namespace Core.WheelOfLuck
         [SerializeField] private TextMeshProUGUI _spinsCountText;
 
         [Space(5), Header("Buttons")]
-        [SerializeField] private Button _startSpinButton;
-        [SerializeField] private Button _watchAndCollectButton;
+        [SerializeField] private ActionButton _startSpinButton;
+        [SerializeField] private ActionButton _watchAndCollectButton;
 
         [Space(5), Header("Other")]
         [SerializeField] private bool _isMultipliersWheel = false;
@@ -57,7 +56,7 @@ namespace Core.WheelOfLuck
         private Tween _spinTween;
         private Tween _pulseTween;
 
-        private UnityAction _prepareAndStartSpinAction;
+        private Action _prepareAndStartSpinAction;
 
         public event Action<WheelReward> OnSpinStarted;
         public event Action<WheelReward> OnSpinFinished;
@@ -74,6 +73,13 @@ namespace Core.WheelOfLuck
                 UpdateCooldownLabel();
                 StartCooldownUpdater();
                 UpdatePulseState();
+
+                if (!IsAvailable())
+                {
+                    _startSpinButton.Interactable = false;
+                    _startSpinButton.Animations.StopPulseAnimation();
+                }
+
                 return;
             }
         }
@@ -85,8 +91,8 @@ namespace Core.WheelOfLuck
 
             _prepareAndStartSpinAction = () => PrepareAndStartSpin();
 
-            _startSpinButton.onClick.AddListener(_prepareAndStartSpinAction);
-            _watchAndCollectButton.onClick.AddListener(ClaimWithAd);
+            _startSpinButton.OnButtonClick += _prepareAndStartSpinAction;
+            _watchAndCollectButton.OnButtonClick += ClaimWithAd;
 
             _watchAndCollectButton.gameObject.SetActive(false);
         }
@@ -111,8 +117,8 @@ namespace Core.WheelOfLuck
             if (_startSpinButton == null || _watchAndCollectButton == null)
                 return;
 
-            _startSpinButton.onClick.RemoveListener(_prepareAndStartSpinAction);
-            _watchAndCollectButton.onClick.RemoveListener(ClaimWithAd);
+            _startSpinButton.OnButtonClick -= _prepareAndStartSpinAction;
+            _watchAndCollectButton.OnButtonClick -= ClaimWithAd;
 
             StopCooldownUpdater();
         }
@@ -127,7 +133,7 @@ namespace Core.WheelOfLuck
             UpdateCooldownLabel();
             UpdatePulseState();
             OnStateChanged?.Invoke();
-            _startSpinButton.interactable = true;
+            _startSpinButton.Interactable = true;
             Debug.Log("[Wheel] DEBUG: cooldown and free spins reset");
         }
 
@@ -229,7 +235,8 @@ namespace Core.WheelOfLuck
             if (_startSpinButton == null)
                 return;
 
-            _startSpinButton.interactable = false;
+            _startSpinButton.Interactable = false;
+            _startSpinButton.Animations.StopPulseAnimation();
         }
 
         private int SelectRewardIndexByWeight()
@@ -320,7 +327,8 @@ namespace Core.WheelOfLuck
                         if (_pendingReward.Type != WheelReward.RewardType.Nothing)
                             _watchAndCollectButton.gameObject.SetActive(true);
 
-                        _startSpinButton.interactable = false;
+                        _startSpinButton.Interactable = false;
+                        _startSpinButton.Animations.StopPulseAnimation();
                     }
 
                     onComplete?.Invoke();
@@ -358,7 +366,7 @@ namespace Core.WheelOfLuck
             UpdateCooldownLabel();
             UpdatePulseState();
 
-            _startSpinButton.interactable = false;
+            _startSpinButton.Interactable = false;
         }
 
         public void ClaimWithAd()
@@ -393,7 +401,7 @@ namespace Core.WheelOfLuck
                 UpdatePulseState();
             });
 
-            _startSpinButton.interactable = false;
+            _startSpinButton.Interactable = false;
         }
 
         private void ApplyReward(WheelReward reward, int bonusMultiplier)
@@ -436,7 +444,7 @@ namespace Core.WheelOfLuck
             if(_watchAndCollectButton != null && _startSpinButton != null)
             {
                 _watchAndCollectButton.gameObject.SetActive(false);
-                _startSpinButton.interactable = true;
+                _startSpinButton.Interactable = true;
                 UpdatePulseState();
             }
         }
