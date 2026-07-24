@@ -45,6 +45,8 @@ namespace UI
 
         private void HandleBallsButtonClick()
         {
+            SceneManager.LoadSceneAsync(SceneNames.BALLS);
+            DOTween.KillAll();
             Debug.Log("Balls Button clicked");
         }
 

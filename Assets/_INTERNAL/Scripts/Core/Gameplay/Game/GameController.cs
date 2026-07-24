@@ -1,4 +1,5 @@
 ﻿using Core.Gameplay.Player;
+using Core.Services.Audio;
 using System.Collections.Generic;
 using UI.Views;
 using UnityEngine;
@@ -74,6 +75,8 @@ namespace Core.Gameplay.Game
             foreach (var screen in _activeScreens)
                 screen.Close();
 
+            _playerStatisticsController.SaveBestScore();
+
             _winPopupView
                 .UpdateUI(
                 _playerStatisticsController.Score,
@@ -82,7 +85,8 @@ namespace Core.Gameplay.Game
             _winPopupView.Open();
             _isPlayerLose = true;
 
-            _playerStatisticsController.SaveBestScore();
+            // Играть луз/вин
+            AudioController.Instance.PlaySfx(0);
         }
 
         private void HandleChangedHighestY(float value) => _lowerBound = value;

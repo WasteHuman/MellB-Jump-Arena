@@ -6562,6 +6562,7 @@ MonoBehaviour:
   _platformSpawner: {fileID: 2039625827}
   _playerStatisticsController: {fileID: 1323615556}
   _bonusSystemController: {fileID: 514090805}
+  _spriteRenderer: {fileID: 2029714819}
 --- !u!50 &2029714822
 Rigidbody2D:
   serializedVersion: 5
