@@ -45,7 +45,7 @@ namespace Core.Services.AdsService
         {
             return;
 
-            Debug.Log("[Ads] Initialization Start.io...");
+            Debug.Log("[Ads] Initialize Start.io...");
 
             _rewardedAd = AdSdk.Instance.CreateInterstitial();
 

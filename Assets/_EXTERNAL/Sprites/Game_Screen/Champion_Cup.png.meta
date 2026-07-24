@@ -1,0 +1,322 @@
+fileFormatVersion: 2
+guid: fb2fa064499d7e74d8fc0ec8409aeb57
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -494577128374686096
+    second: Champion_Cup_0
+  - first:
+      213: 7206387726942964663
+    second: Champion_Cup_1
+  - first:
+      213: 4309194163334500325
+    second: Champion_Cup_2
+  - first:
+      213: -1591796320154926017
+    second: Champion_Cup_3
+  - first:
+      213: 6317928533834401143
+    second: Champion_Cup_4
+  - first:
+      213: 5515234037917841417
+    second: Champion_Cup_5
+  - first:
+      213: -6945872311681058355
+    second: Champion_Cup_6
+  - first:
+      213: 72665874632005111
+    second: Champion_Cup_7
+  - first:
+      213: -7775356074180697789
+    second: Champion_Cup_8
+  - first:
+      213: 1052738412584695086
+    second: Champion_Cup_9
+  - first:
+      213: -5369062424294284848
+    second: Champion_Cup_10
+  - first:
+      213: -365028928742528190
+    second: Champion_Cup_11
+  - first:
+      213: -4324232565369647231
+    second: Champion_Cup_12
+  - first:
+      213: -8029969533680819038
+    second: Champion_Cup_13
+  - first:
+      213: 2148942418772407909
+    second: Champion_Cup_14
+  - first:
+      213: 6032143710951068337
+    second: Champion_Cup_15
+  - first:
+      213: -9183982267319499604
+    second: Champion_Cup_16
+  - first:
+      213: -2514024714120198960
+    second: Champion_Cup_17
+  - first:
+      213: -5140819011789218357
+    second: Champion_Cup_18
+  - first:
+      213: -9102804631145900349
+    second: Champion_Cup_19
+  - first:
+      213: 4677731727452194243
+    second: Champion_Cup_20
+  - first:
+      213: 6673080526593508883
+    second: Champion_Cup_21
+  - first:
+      213: -5336191545583401619
+    second: Champion_Cup_22
+  - first:
+      213: 7593781213379487999
+    second: Champion_Cup_23
+  - first:
+      213: -2263535184757865270
+    second: Champion_Cup_24
+  - first:
+      213: 1882037744510155334
+    second: Champion_Cup_25
+  - first:
+      213: -391679348115202841
+    second: Champion_Cup_26
+  - first:
+      213: -5397426593412446446
+    second: Champion_Cup_27
+  - first:
+      213: 7915767662692750304
+    second: Champion_Cup_28
+  - first:
+      213: 5414993039570916565
+    second: Champion_Cup_29
+  - first:
+      213: 7375854012850885243
+    second: Champion_Cup_30
+  - first:
+      213: 3767800536123539343
+    second: Champion_Cup_31
+  - first:
+      213: 7651807123798516003
+    second: Champion_Cup_32
+  - first:
+      213: 2955388194441459633
+    second: Champion_Cup_33
+  - first:
+      213: -4453762068990807815
+    second: Champion_Cup_34
+  - first:
+      213: 218106217970036204
+    second: Champion_Cup_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: 48
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: 48
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Champion_Cup_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1720
+        height: 1788
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07ea13dd8b8e229f0800000000000000
+      internalID: -494577128374686096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a157dd78acf2c584fb763dcab4d2069a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Champion_Cup_0: -494577128374686096
+      Champion_Cup_1: 7206387726942964663
+      Champion_Cup_10: -5369062424294284848
+      Champion_Cup_11: -365028928742528190
+      Champion_Cup_12: -4324232565369647231
+      Champion_Cup_13: -8029969533680819038
+      Champion_Cup_14: 2148942418772407909
+      Champion_Cup_15: 6032143710951068337
+      Champion_Cup_16: -9183982267319499604
+      Champion_Cup_17: -2514024714120198960
+      Champion_Cup_18: -5140819011789218357
+      Champion_Cup_19: -9102804631145900349
+      Champion_Cup_2: 4309194163334500325
+      Champion_Cup_20: 4677731727452194243
+      Champion_Cup_21: 6673080526593508883
+      Champion_Cup_22: -5336191545583401619
+      Champion_Cup_23: 7593781213379487999
+      Champion_Cup_24: -2263535184757865270
+      Champion_Cup_25: 1882037744510155334
+      Champion_Cup_26: -391679348115202841
+      Champion_Cup_27: -5397426593412446446
+      Champion_Cup_28: 7915767662692750304
+      Champion_Cup_29: 5414993039570916565
+      Champion_Cup_3: -1591796320154926017
+      Champion_Cup_30: 7375854012850885243
+      Champion_Cup_31: 3767800536123539343
+      Champion_Cup_32: 7651807123798516003
+      Champion_Cup_33: 2955388194441459633
+      Champion_Cup_34: -4453762068990807815
+      Champion_Cup_35: 218106217970036204
+      Champion_Cup_4: 6317928533834401143
+      Champion_Cup_5: 5515234037917841417
+      Champion_Cup_6: -6945872311681058355
+      Champion_Cup_7: 72665874632005111
+      Champion_Cup_8: -7775356074180697789
+      Champion_Cup_9: 1052738412584695086
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

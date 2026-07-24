@@ -1,47 +1,74 @@
 ﻿using DG.Tweening;
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UI.Animations.GameScreen
 {
-    [RequireComponent(typeof(Button))]
     [RequireComponent(typeof(RectTransform))]
     public class ButtonAnimations : MonoBehaviour
     {
+        [Header("Click Animations Setup")]
         [SerializeField] private float _clickAnimationDuration = 0.25f;
         [SerializeField] private Vector2 _clickedScale = Vector2.one;
 
-        private RectTransform _rectTransform;
-        private Button _button;
+        [Space(5), Header("Pulse Animation Setup")]
+        [SerializeField] private float _pulseAnimationDuration = 1.0f;
+        [SerializeField] private Vector2 _pulseScale = Vector2.one;
+        [SerializeField] private bool _usingPulseAnimation = false;
 
-        private Tween _clickTween;
+        private RectTransform _rectTransform;
+
+        private Tween _pulseTween;
+
+        private Sequence _clickSequence;
 
         private void Awake()
         {
-            _button = GetComponent<Button>();
             _rectTransform = GetComponent<RectTransform>();
+        }
 
-            _button.onClick.AddListener(HandleButtonClick);
+        private void Start()
+        {
+            if (_usingPulseAnimation)
+                PulseAnimation();
         }
 
         private void OnDestroy()
         {
-            _button.onClick.RemoveListener(HandleButtonClick);
+            StopAnimations();
         }
 
         public void StopAnimations()
         {
-            _clickTween?.Kill();
+            _rectTransform.DOKill();
         }
 
-        private void HandleButtonClick()
+        private void PulseAnimation()
         {
-            StopAnimations();
+            _pulseTween?.Kill();
 
-            _clickTween = _rectTransform
-                .DOScale(_clickedScale, _clickAnimationDuration)
+            _pulseTween = _rectTransform
+                .DOScale(_pulseScale, _pulseAnimationDuration)
                 .SetEase(Ease.InOutSine)
-                .SetLoops(1, LoopType.Yoyo);
+                .SetLoops(-1, LoopType.Yoyo);
+        }
+
+        public void ButtonClickAnimation(Action onComplete = null)
+        {
+            _clickSequence?.Kill();
+
+            _clickSequence = DOTween.Sequence();
+
+            _clickSequence.Append(
+                _rectTransform
+                .DOScale(_clickedScale, _clickAnimationDuration)
+                .SetEase(Ease.OutSine));
+
+            _clickSequence.Append(_rectTransform
+                .DOScale(Vector2.one, _clickAnimationDuration)
+                .SetEase(Ease.InSine));
+
+            _clickSequence.OnComplete(() => onComplete?.Invoke());
         }
     }
 }

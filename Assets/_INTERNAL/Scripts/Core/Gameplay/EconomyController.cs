@@ -10,8 +10,11 @@ namespace Core.Gameplay
         [SerializeField] private float _initialBalance = 100000f;
 
         private float _currentCoinsBalance;
+        private float _currentGemsBalance;
+        private float _collectedCoins;
 
-        public event Action<float> OnBalanceChanged;
+        public event Action<float> OnCoinsBalanceChanged;
+        public event Action<float> OnGemsBalanceChanged;
 
         public static EconomyController Instance
         {
@@ -38,9 +41,76 @@ namespace Core.Gameplay
         public float GetCoinsBalance() => _currentCoinsBalance;
 
         /// <summary>
+        /// Получить текущее количество собранных монет
+        /// </summary>
+        public float GetCollectedCoins() => _collectedCoins;
+
+        /// <summary>
         /// Запросить текущий баланс Coins (invoke события)
         /// </summary>
-        public void RequestCoinsBalance() => OnBalanceChanged?.Invoke(_currentCoinsBalance);
+        public void RequestCoinsBalance() => OnCoinsBalanceChanged?.Invoke(_currentCoinsBalance);
+
+        /// <summary>
+        /// Запросить текущий баланс Gems (invoke события)
+        /// </summary>
+        public void RequestGemsBanalce() => OnGemsBalanceChanged?.Invoke(_currentGemsBalance);
+
+        /// <summary>
+        /// Добавить средства (выигрыш, бонус)
+        /// </summary>
+        public void AddGems(float amount)
+        {
+            if (amount < 0)
+            {
+                Debug.LogWarning($"Attempt to add a negattive amount: {amount}. Use the SpendGems() method");
+                return;
+            }
+
+            _currentGemsBalance += amount;
+            OnGemsBalanceChanged?.Invoke(_currentGemsBalance);
+
+            Debug.Log($"[Economy] Added gems: +{amount}. New balance: {_currentGemsBalance}");
+        }
+
+        /// <summary>
+        /// Списать средства (ставка, проигрыш)
+        /// </summary>
+        public bool SpendGems(float amount)
+        {
+            if (amount < 0)
+            {
+                Debug.LogWarning($"Attempt to debit a negative amount: {amount}. Use the AddGems() method");
+                return false;
+            }
+
+            if (!HasEnoughBalance(amount))
+            {
+                Debug.LogWarning($"Not enough gems! Balance: {_currentGemsBalance}, needed: {amount}");
+                return false;
+            }
+
+            _currentGemsBalance -= amount;
+            OnGemsBalanceChanged?.Invoke(_currentGemsBalance);
+
+            Debug.Log($"[Economy] Debited: -{amount}. New gems balance: {_currentGemsBalance}");
+            return true;
+        }
+
+        /// <summary>
+        /// Добавить собранные монеты
+        /// </summary>
+        public void AddCollectedCoins(float amount)
+        {
+            if (amount < 0)
+            {
+                Debug.LogWarning($"Attempt to add a negattive amount: {amount}");
+                return;
+            }
+
+            _collectedCoins += amount;
+
+            Debug.Log($"[Economy] Added collected coins: +{amount}. New balance: {_collectedCoins}");
+        }
 
         /// <summary>
         /// Добавить средства (выигрыш, бонус)
@@ -54,9 +124,9 @@ namespace Core.Gameplay
             }
 
             _currentCoinsBalance += amount;
-            OnBalanceChanged?.Invoke(_currentCoinsBalance);
+            OnCoinsBalanceChanged?.Invoke(_currentCoinsBalance);
 
-            Debug.Log($"[Economy] Added: +{amount}. New balance: {_currentCoinsBalance}");
+            Debug.Log($"[Economy] Added coins: +{amount}. New balance: {_currentCoinsBalance}");
         }
 
         /// <summary>
@@ -77,7 +147,7 @@ namespace Core.Gameplay
             }
 
             _currentCoinsBalance -= amount;
-            OnBalanceChanged?.Invoke(_currentCoinsBalance);
+            OnCoinsBalanceChanged?.Invoke(_currentCoinsBalance);
 
             Debug.Log($"[Economy] Debited: -{amount}. New balance: {_currentCoinsBalance}");
             return true;
@@ -94,8 +164,13 @@ namespace Core.Gameplay
         public void SetBalance(float amount)
         {
             _currentCoinsBalance = Mathf.Max(0, amount);
-            OnBalanceChanged?.Invoke(_currentCoinsBalance);
+            OnCoinsBalanceChanged?.Invoke(_currentCoinsBalance);
         }
+
+        /// <summary>
+        /// Сбросить собранные монеты
+        /// </summary>
+        public void ResetCollectedCoins() => _collectedCoins = 0f;
 
         /// <summary>
         /// Сбросить баланс на начальное значение
@@ -103,7 +178,7 @@ namespace Core.Gameplay
         public void ResetBalance()
         {
             _currentCoinsBalance = _initialBalance;
-            OnBalanceChanged?.Invoke(_currentCoinsBalance);
+            OnCoinsBalanceChanged?.Invoke(_currentCoinsBalance);
         }
     }
 }

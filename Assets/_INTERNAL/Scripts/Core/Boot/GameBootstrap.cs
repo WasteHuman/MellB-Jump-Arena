@@ -114,7 +114,7 @@ namespace Core.Boot
             float loadingDuration = 5f;
             float elapsedTime = 0f;
 
-            SceneManager.LoadSceneAsync(SceneNames.GAME);
+            SceneManager.LoadSceneAsync(SceneNames.MAIN_MENU);
 
             while (elapsedTime < loadingDuration)
             {
