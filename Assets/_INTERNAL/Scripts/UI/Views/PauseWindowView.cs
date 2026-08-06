@@ -27,14 +27,16 @@ namespace UI.Views
         {
             _backToMainMenuButton.OnButtonClick += HandleBackToMainMenuButtonClick;
             _pauseButton.OnButtonClick += HanndlePauseButtonClick;
-            _resumeButton.OnButtonClick += HandleResumeButtonClick;
         }
+
+        private void OnEnable() => _resumeButton.OnButtonClick += HandleResumeButtonClick;
+
+        private void OnDisable() => _resumeButton.OnButtonClick -= HandleResumeButtonClick;
 
         private void OnDestroy()
         {
             _backToMainMenuButton.OnButtonClick -= HandleBackToMainMenuButtonClick;
             _pauseButton.OnButtonClick -= HanndlePauseButtonClick;
-            _resumeButton.OnButtonClick -= HandleResumeButtonClick;
 
             _openTween?.Kill();
             _closeTween?.Kill();
@@ -71,7 +73,11 @@ namespace UI.Views
 
         private void HanndlePauseButtonClick() => Open(OnPauseOpened);
 
-        private void HandleResumeButtonClick() => Close(OnPauseClosed);
+        private void HandleResumeButtonClick()
+        {
+            Close(OnPauseClosed);
+            Debug.Log($"[Pause Window View] Resume button clicked");
+        }
 
         private void HandleBackToMainMenuButtonClick() => SceneManager.LoadSceneAsync(SceneNames.MAIN_MENU);
     }

@@ -1,4 +1,5 @@
 ﻿using Core.Gameplay.Player;
+using Core.Store;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ namespace UI.Animations.GameScreen
 
         [Space(5), Header("Visual Setup")]
         [SerializeField] private Image _ballImage;
+        [SerializeField] private SkinsSelectionController _skinsSelectionController;
 
         private Tween _hoverTween;
 
@@ -28,7 +30,9 @@ namespace UI.Animations.GameScreen
 
         private void Start()
         {
-            _ballImage.sprite = PlayerSkinsController.GetCurrentSprite();
+            var skin = _skinsSelectionController.GetLastSelectedSkin(PlayerSkinsController.GetCurrentSkinId());
+            _ballImage.sprite = skin;
+            Debug.Log($"[Ball On Platform] Current sprite (skin): {skin.name}");
             PlayerSkinsController.OnSkinChanged += HandleChangedSkin;
         }
 

@@ -17,23 +17,31 @@ namespace Core.Gameplay.Game
                 return;
 
             if (collision.gameObject.TryGetComponent<PlayerController>(out var player))
-            {
-                _isCollected = true;
-                Hide(true);
-                EconomyController.Instance.AddGems(_amount);
-            }
+                Collect();
+        }
+
+        public void MagnetCollect(Vector2 playerPosition) => MoveTo(playerPosition, () => Collect());
+
+        public void Collect()
+        {
+            if (_isCollected)
+                return;
+
+            _isCollected = true;
+            Hide(true);
+            EconomyController.Instance.AddGems(_amount);
         }
 
         public void Show()
         {
+            _isCollected = false;
+
             gameObject.SetActive(true);
             Appear(transform.localScale);
         }
 
         public void Hide(bool withAnimation = false)
         {
-            _isCollected = false;
-
             if (withAnimation)
             {
                 Appear(Vector3.zero, () => gameObject.SetActive(false));

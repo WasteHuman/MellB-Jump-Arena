@@ -2717,6 +2717,7 @@ MonoBehaviour:
   _hoverAnimationDuration: 0.85
   _ballRect: {fileID: 392120920}
   _ballImage: {fileID: 392120922}
+  _skinsSelectionController: {fileID: 885692431}
 --- !u!1 &402874152
 GameObject:
   m_ObjectHideFlags: 0
@@ -4610,7 +4611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: ba74a02bfa0796e4ba1d1b7b67c9939c, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -7030,8 +7031,8 @@ MonoBehaviour:
   _selectButtonImage: {fileID: 0}
   _selectedButtonSprite: {fileID: 0}
   _selectButtonSprite: {fileID: 0}
-  _selectLabel: {fileID: 0}
-  _background: {fileID: 0}
+  _selectLabel: {fileID: 1772746994}
+  _background: {fileID: 797868668}
   _selectedSprite: {fileID: 8675855858374668370, guid: de4057854f85e7344a259e26d40d5c30, type: 3}
   _unselectedSprite: {fileID: 6581207670957725912, guid: 7cf4a8a19d4ecf141a50e180f055c358, type: 3}
   _isMainMenuBall: 1
@@ -7504,8 +7505,8 @@ MonoBehaviour:
   _selectButtonImage: {fileID: 0}
   _selectedButtonSprite: {fileID: 0}
   _selectButtonSprite: {fileID: 0}
-  _selectLabel: {fileID: 0}
-  _background: {fileID: 0}
+  _selectLabel: {fileID: 160610175}
+  _background: {fileID: 848050626}
   _selectedSprite: {fileID: 8675855858374668370, guid: de4057854f85e7344a259e26d40d5c30, type: 3}
   _unselectedSprite: {fileID: 6581207670957725912, guid: 7cf4a8a19d4ecf141a50e180f055c358, type: 3}
   _isMainMenuBall: 1
@@ -7869,8 +7870,8 @@ MonoBehaviour:
   _selectButtonImage: {fileID: 0}
   _selectedButtonSprite: {fileID: 0}
   _selectButtonSprite: {fileID: 0}
-  _selectLabel: {fileID: 0}
-  _background: {fileID: 0}
+  _selectLabel: {fileID: 572553141}
+  _background: {fileID: 855264548}
   _selectedSprite: {fileID: 8675855858374668370, guid: de4057854f85e7344a259e26d40d5c30, type: 3}
   _unselectedSprite: {fileID: 6581207670957725912, guid: 7cf4a8a19d4ecf141a50e180f055c358, type: 3}
   _isMainMenuBall: 1
@@ -8527,8 +8528,8 @@ MonoBehaviour:
   _selectButtonImage: {fileID: 0}
   _selectedButtonSprite: {fileID: 0}
   _selectButtonSprite: {fileID: 0}
-  _selectLabel: {fileID: 0}
-  _background: {fileID: 0}
+  _selectLabel: {fileID: 478500326}
+  _background: {fileID: 969966866}
   _selectedSprite: {fileID: 8675855858374668370, guid: de4057854f85e7344a259e26d40d5c30, type: 3}
   _unselectedSprite: {fileID: 6581207670957725912, guid: 7cf4a8a19d4ecf141a50e180f055c358, type: 3}
   _isMainMenuBall: 1
@@ -9482,8 +9483,8 @@ MonoBehaviour:
   _selectButtonImage: {fileID: 0}
   _selectedButtonSprite: {fileID: 0}
   _selectButtonSprite: {fileID: 0}
-  _selectLabel: {fileID: 0}
-  _background: {fileID: 0}
+  _selectLabel: {fileID: 1184741654}
+  _background: {fileID: 1049296392}
   _selectedSprite: {fileID: 8675855858374668370, guid: de4057854f85e7344a259e26d40d5c30, type: 3}
   _unselectedSprite: {fileID: 6581207670957725912, guid: 7cf4a8a19d4ecf141a50e180f055c358, type: 3}
   _isMainMenuBall: 1
@@ -10623,8 +10624,8 @@ MonoBehaviour:
   _selectButtonImage: {fileID: 0}
   _selectedButtonSprite: {fileID: 0}
   _selectButtonSprite: {fileID: 0}
-  _selectLabel: {fileID: 0}
-  _background: {fileID: 0}
+  _selectLabel: {fileID: 511664530}
+  _background: {fileID: 1202098803}
   _selectedSprite: {fileID: 8675855858374668370, guid: de4057854f85e7344a259e26d40d5c30, type: 3}
   _unselectedSprite: {fileID: 6581207670957725912, guid: 7cf4a8a19d4ecf141a50e180f055c358, type: 3}
   _isMainMenuBall: 1
@@ -10815,8 +10816,8 @@ MonoBehaviour:
   _selectButtonImage: {fileID: 0}
   _selectedButtonSprite: {fileID: 0}
   _selectButtonSprite: {fileID: 0}
-  _selectLabel: {fileID: 0}
-  _background: {fileID: 0}
+  _selectLabel: {fileID: 851518380}
+  _background: {fileID: 1211083259}
   _selectedSprite: {fileID: 8675855858374668370, guid: de4057854f85e7344a259e26d40d5c30, type: 3}
   _unselectedSprite: {fileID: 6581207670957725912, guid: 7cf4a8a19d4ecf141a50e180f055c358, type: 3}
   _isMainMenuBall: 1
@@ -11007,7 +11008,7 @@ MonoBehaviour:
   _selectButtonImage: {fileID: 0}
   _selectedButtonSprite: {fileID: 0}
   _selectButtonSprite: {fileID: 0}
-  _selectLabel: {fileID: 0}
+  _selectLabel: {fileID: 312825550}
   _background: {fileID: 1215165807}
   _selectedSprite: {fileID: 8675855858374668370, guid: de4057854f85e7344a259e26d40d5c30, type: 3}
   _unselectedSprite: {fileID: 6581207670957725912, guid: 7cf4a8a19d4ecf141a50e180f055c358, type: 3}
@@ -11534,7 +11535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: ba74a02bfa0796e4ba1d1b7b67c9939c, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -11776,7 +11777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: ba74a02bfa0796e4ba1d1b7b67c9939c, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -13482,7 +13483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 830eb108b3e3f4e40aea5fabeeb868fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Gameplay.EconomyController
-  _initialBalance: 100
+  _initialCoinsBalance: 100
+  _initialGemsBalance: 100
 --- !u!4 &1574971142
 Transform:
   m_ObjectHideFlags: 0

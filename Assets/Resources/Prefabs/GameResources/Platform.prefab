@@ -110,6 +110,7 @@ MonoBehaviour:
   _appearAnimationDuration: 0.35
   _hoverAnimationDuration: 0.5
   _yMoveOffset: 1
+  _moveAnimationDuration: 0.25
   _hoverAnimationEnabled: 0
 --- !u!50 &1113057923454046589
 Rigidbody2D:
@@ -225,7 +226,7 @@ GameObject:
   - component: {fileID: 5588043096097125136}
   - component: {fileID: 1668640740064804663}
   - component: {fileID: 8445559170904922209}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,6 +322,7 @@ MonoBehaviour:
   _appearAnimationDuration: 0.35
   _hoverAnimationDuration: 0.5
   _yMoveOffset: 1
+  _moveAnimationDuration: 0.1
   _hoverAnimationEnabled: 1
   _amount: 1
 --- !u!50 &1668640740064804663
@@ -574,7 +576,7 @@ BoxCollider2D:
   m_UsedByEffector: 1
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00000047683716, y: 0.67402637}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -584,7 +586,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6.26, y: 3.34}
+  m_Size: {x: 4.479087, y: 1.9919474}
   m_EdgeRadius: 0
 --- !u!114 &7423273986053488245
 MonoBehaviour:
@@ -617,7 +619,7 @@ GameObject:
   - component: {fileID: 5712198812335041093}
   - component: {fileID: 8946804362567731811}
   - component: {fileID: 2033608480197789478}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,6 +715,7 @@ MonoBehaviour:
   _appearAnimationDuration: 0.35
   _hoverAnimationDuration: 0.5
   _yMoveOffset: 1
+  _moveAnimationDuration: 0.1
   _hoverAnimationEnabled: 1
   _amount: 10
 --- !u!50 &8946804362567731811

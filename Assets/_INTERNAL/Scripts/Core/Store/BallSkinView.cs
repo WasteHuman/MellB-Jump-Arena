@@ -48,7 +48,14 @@ namespace Core.Store
         public void SetAvailableState(bool isAvailable)
         {
             if (_lockIcon != null)
+            {
                 _lockIcon.SetActive(!isAvailable);
+                if (_selectButton != null)
+                {
+                    _selectButton.gameObject.SetActive(isAvailable);
+                    SetUnselectedState();
+                }
+            }
 
             if (!isAvailable)
                 SetLockedState();
@@ -122,7 +129,7 @@ namespace Core.Store
                     {
                         if (item.name.Contains("Lock_Icon"))
                         {
-                            _lockIcon = child.gameObject;
+                            _lockIcon = item.gameObject;
                             return;
                         }
                     }

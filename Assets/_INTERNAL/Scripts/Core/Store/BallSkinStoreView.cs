@@ -10,12 +10,14 @@ namespace Core.Store
         [SerializeField] private Sprite _skin;
         [SerializeField] private float _price;
         [SerializeField] private bool _isAvailableByDefault = false;
+        [SerializeField] private CurrencyType _currencyType;
 
         private bool _isPurchased = false;
 
         public Sprite Skin => _skin;
         public float Price => _price;
         public bool IsAvailableByDefault => _isAvailableByDefault;
+        public CurrencyType CurrencyType => _currencyType;
 
         public event Action<BallSkinStoreView> OnBuyButtonClicked;
 

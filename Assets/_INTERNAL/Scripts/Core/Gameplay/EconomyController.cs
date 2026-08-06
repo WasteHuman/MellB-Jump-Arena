@@ -7,7 +7,8 @@ namespace Core.Gameplay
     {
         private static EconomyController _instance;
 
-        [SerializeField] private float _initialBalance = 100000f;
+        [SerializeField] private float _initialCoinsBalance = 100f;
+        [SerializeField] private float _initialGemsBalance = 100f;
 
         private float _currentCoinsBalance;
         private float _currentGemsBalance;
@@ -30,7 +31,8 @@ namespace Core.Gameplay
             }
 
             _instance = this;
-            _currentCoinsBalance = _initialBalance;
+            _currentCoinsBalance = _initialCoinsBalance;
+            _currentGemsBalance = _initialGemsBalance;
 
             DontDestroyOnLoad(gameObject);
         }
@@ -83,7 +85,7 @@ namespace Core.Gameplay
                 return false;
             }
 
-            if (!HasEnoughBalance(amount))
+            if (!HasEnoughBalanceGems(amount))
             {
                 Debug.LogWarning($"Not enough gems! Balance: {_currentGemsBalance}, needed: {amount}");
                 return false;
@@ -140,7 +142,7 @@ namespace Core.Gameplay
                 return false;
             }
 
-            if (!HasEnoughBalance(amount))
+            if (!HasEnoughBalanceCoins(amount))
             {
                 Debug.LogWarning($"Not enough coins! Balance: {_currentCoinsBalance}, needed: {amount}");
                 return false;
@@ -154,9 +156,14 @@ namespace Core.Gameplay
         }
 
         /// <summary>
-        /// Проверить, достаточно ли средств
+        /// Проверить, достаточно ли средств (монет)
         /// </summary>
-        public bool HasEnoughBalance(float amount) => _currentCoinsBalance >= amount;
+        public bool HasEnoughBalanceCoins(float amount) => _currentCoinsBalance >= amount;
+
+        /// <summary>
+        /// Проверить, достаточно ли средств (гемы)
+        /// </summary>
+        public bool HasEnoughBalanceGems(float amount) => _currentGemsBalance >= amount;
 
         /// <summary>
         /// Установить баланс (для тестирования или загрузки из сохранений)
@@ -177,7 +184,10 @@ namespace Core.Gameplay
         /// </summary>
         public void ResetBalance()
         {
-            _currentCoinsBalance = _initialBalance;
+            _currentCoinsBalance = _initialCoinsBalance;
+            _currentGemsBalance = _initialGemsBalance;
+
+            OnGemsBalanceChanged?.Invoke(_currentGemsBalance);
             OnCoinsBalanceChanged?.Invoke(_currentCoinsBalance);
         }
     }

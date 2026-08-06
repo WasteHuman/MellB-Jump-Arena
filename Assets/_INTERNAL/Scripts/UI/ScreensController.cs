@@ -35,21 +35,18 @@ namespace UI
 
         private void Start()
         {
-            if (_gameScreen.IsActive)
+            if (!_hasShownLetsPlayThisSession && PlayerPrefs.GetInt(ShownLetsPlayKey, 0) == 0)
             {
-                if (!_hasShownLetsPlayThisSession && PlayerPrefs.GetInt(ShownLetsPlayKey, 0) == 0)
-                {
-                    _gameScreen.Close();
-                    _letsPlayScreen.Open();
-                    PlayerPrefs.SetInt(ShownLetsPlayKey, 1);
-                    PlayerPrefs.Save();
-                    _hasShownLetsPlayThisSession = true;
-                }
-                else
-                {
-                    _letsPlayScreen.Close();
-                    _gameScreen.Open();
-                }
+                _gameScreen.Close();
+                _letsPlayScreen.Open();
+                PlayerPrefs.SetInt(ShownLetsPlayKey, 1);
+                PlayerPrefs.Save();
+                _hasShownLetsPlayThisSession = true;
+            }
+            else
+            {
+                _letsPlayScreen.Close();
+                _gameScreen.Open();
             }
         }
 

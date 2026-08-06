@@ -13,13 +13,18 @@ namespace UI.Animations.Game
         [Space(5), Header("Hover Animation Setup")]
         [SerializeField] private float _yMoveOffset = 1.0f;
 
+        [Space(5), Header("Move Animation Setup")]
+        [SerializeField] private float _moveAnimationDuration = 0.25f;
+
         [Space(5), Header("Animations Flags")]
         [SerializeField] private bool _hoverAnimationEnabled = true;
 
         private Vector3 _originalScale;
+        private Vector3 _originalPosition;
 
         private Tween _appearTween;
         private Tween _hoverTween;
+        private Tween _moveTween;
 
         private void OnEnable()
         {
@@ -31,12 +36,14 @@ namespace UI.Animations.Game
         {
             _hoverTween?.Kill();
             _appearTween?.Kill();
+            _moveTween?.Kill();
         }
 
         private void OnDestroy()
         {
             _hoverTween?.Kill();
             _appearTween?.Kill();
+            _moveTween?.Kill();
         }
 
         private void HoverAnimation()
@@ -51,6 +58,22 @@ namespace UI.Animations.Game
                 .SetEase(Ease.InOutSine)
                 .SetLoops(-1, LoopType.Yoyo)
                 .OnKill(() => transform.localPosition = originalPosition);
+        }
+
+        public void MoveTo(Vector3 to, Action onComplete = null)
+        {
+            _hoverTween?.Kill();
+            _moveTween?.Kill();
+            _originalPosition = transform.position;
+
+            _moveTween = transform
+                .DOMove(to, _moveAnimationDuration)
+                .SetEase(Ease.InOutSine)
+                .OnComplete(() =>
+                {
+                    transform.position = _originalPosition;
+                    onComplete?.Invoke();
+                });
         }
 
         public void Appear(Vector3 originalScale, Action onComplete = null)

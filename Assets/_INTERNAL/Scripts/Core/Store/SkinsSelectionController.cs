@@ -1,5 +1,6 @@
 ﻿using Core.Gameplay.Player;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Core.Store
@@ -33,6 +34,12 @@ namespace Core.Store
         private void OnDestroy()
         {
             UnsubscribeFromSkins();
+        }
+
+        public Sprite GetLastSelectedSkin(string skinId)
+        {
+            var skin = _skins.FirstOrDefault(s => s.Skin.name == skinId);
+            return skin.Skin;
         }
 
         private void CollectSkinsFromContainer()
